@@ -1,0 +1,81 @@
+{% extends "base/base.html" %}
+
+{% block head %}
+    {% include 'base/navbar.html' %}
+{% endblock %}
+
+{% block content %}
+{% if cart_info %}
+<div class="container text-center">
+<h1>Cart</h1>
+</div>
+<div class="container">
+  <table class="table cart-table">
+    <thead>
+      <tr>
+        <th>No.</th>
+        <th>Product Name</th>
+        <th>Product Image</th>
+        <th>Product Price</th>
+        <th>Product Amount</th>
+        <th>Product Total</th>
+      </tr>
+    </thead>
+    <tbody class='cart-body'>
+      {% for product in cart_info %}
+      <tr class='cart-product'>
+        <th scope="row">{{ forloop.counter }}</th>
+        <td><a href='{% url 'product_list:product_detail' pk=product.id %}'>{{ product.title }}</a> 
+          {% include './cart-remove-form.html' with product_id=product.id %}
+        </td>
+        <td><img src="{{ product.image }}" alt="" width="100px" height="100px"></td>
+        <td>&#x9f3;{{ product.price }}</td>
+        <td>
+            <form method="POST" class="quantity-form" autocomplete="off">
+                {% csrf_token %}
+                <input type="hidden" class="produt-cart-id" name="produt-cart-name" value="{{ product.id }}">
+                <input type="hidden" class="in-stock-amount" name="in-stock-amount" value="{{ product.in_stock }}"> 
+                <input type="text" class="qty-name-id" name="qty-name" value="{{ product.amount }}">
+                <p style="color: red;" class="error-cart-amount"></p>
+            </form>
+        </td>
+        <td class="product-total-div">&#x9f3;{{ product.total }}</td>
+      </tr>
+      {% endfor %}
+      <tr>
+        <td colspan="5"></td>
+        <td><b>Cart Total</b> &#x9f3;<span class='cart-subtotal'>{{ cart_subtotal }}</span></td>
+      </tr>
+      <tr>
+          <td colspan="5"></td>
+          <td><b>Shipping</b> &#x9f3;<span class='cart-shipping'>{{ shipping }}</span></td>
+      </tr>
+      <tr>
+        <td colspan="5"></td>
+        <td><b>Total</b> &#x9f3;<span class='cart-total'>{{ total }}</span></td>
+      </tr>
+      <tr>
+        <td colspan="5"></td>
+        <td><a class='btn btn-lg btn-success' href='{% url 'order:view' %}'>Checkout</a></td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>
+
+<div class='cart-item-remove-form' style='display:none'>
+
+    {% include './cart-remove-form.html' %}
+  </div>
+
+{% else %}
+    <div class="alert alert-danger container text-center" role="alert" style="margin-top: 10PX;">
+        Cart is empty
+    </div>
+{% endif %}
+
+{% endblock %}
+
+
+
+
