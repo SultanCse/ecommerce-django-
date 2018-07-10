@@ -1,0 +1,18 @@
+{% extends 'base/base.html' %}
+
+{% block head %}
+    {% include 'base/navbar.html' %}
+{% endblock %}
+
+{% block content %}
+  <div class="container text-center verification-div border">
+    <form method="POST">
+      {% csrf_token %}
+        <div class="form-group">
+          <label for="verification-code">Enter Your Code</label>
+          <input type="text" class="form-control" id="verification-code" name="verification-code"  placeholder="Enter code">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+  </div>
+{% endblock %}

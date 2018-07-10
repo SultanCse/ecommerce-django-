@@ -24,14 +24,6 @@ def order(request):
     return render(request, 'order/order.html', context)
 
 def confirm(request):
-    cart_instance = Cart.objects.get(id=request.session['cart_id'])
-    qs = CartAmount.objects.filter(cart=cart_instance)
-    for product in qs:
-        cart_amount = product.amount
-        instance = ProductList.objects.get(id=product.products.id)
-        in_stock =  instance.stock - cart_amount
-        instance.stock = in_stock
-        instance.save()
     del request.session['in_cart']
     del request.session['cart_id']
     return render(request, 'order/notify.html')
