@@ -1,0 +1,31 @@
+{% extends 'base/base.html' %}
+
+{% block head %}
+    {% include 'base/navbar.html' %}
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            {% if request.GET.q %}
+            <div class="col-12 mb-3">
+                Searched for: {{ request.GET.q }}
+            </div>
+            {% endif %}
+            {% for product in products_list_all %}
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="{{ product.image.url }}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">{{ product.title }}</h5>
+                    <h7 class="card-title">৳ {{ product.price }}</h7>
+                    <p class="card-text">{{ product.description }}</p>
+                    <div class="row">
+                        <div class="col-sm-6"><a href="{% url 'product_list:product_detail' pk=product.id %}" class="btn btn-primary">Detail</a></div>
+                        <div class="col-sm-6"><a href="#" class="btn btn-primary">Cart</a></div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

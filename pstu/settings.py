@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'user',
     'widget_tweaks',
     'order',
+    'search',
 ]
 
 MIDDLEWARE = [
