@@ -27,6 +27,7 @@ urlpatterns = [
     url(r'^user/', include('user.urls', namespace='user')),
     url(r'^order/', include('order.urls', namespace='order')),
     url(r'^search/', include('search.urls', namespace='search')),
+    url(r'^category/', include('category.urls', namespace='category')),
 ]
 
 if settings.DEBUG:

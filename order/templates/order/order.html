@@ -1,5 +1,31 @@
-<form method='POST'>{% csrf_token %}
-    {{ form }}
-    <button type='submit' class="btn btn-primary">Submit</button>
-</form>
+{% extends "base/base.html" %} 
+{% block head %}
+{% include "base/navbar.html" %}
+{% endblock %}
+{% block content %}
+{% load static %}
 
+<div class="container">
+    <div class="row my-5 mx-5">
+        <img  src="{% static "bkash.png" %}" alt="Bkash" style=" height: 50px; widows: 50px;">
+        <h1>Payment Number:</h1>
+        <h1 style="color: crimson"> 01878072833</h1>
+    </div>
+<hr style="border-width: 5px; border-color: #55b9fc33; "/>
+</div>
+
+<form method='POST'>
+    {% csrf_token %}{% load widget_tweaks %}
+    <div class="container" style="width: 400px;">
+        <div class="row">
+            {{ form.contact.label_tag }} {{ form.contact| add_class:"form-control" }}
+        </div>
+        <div class="row">
+            {{ form.transection.label_tag }} {{ form.transection| add_class:"form-control" }}
+        </div>
+        <div class="row">
+            <button type='submit' class="btn btn-primary mt-3">Submit</button>
+        </div>
+    </div>
+</form>
+{% endblock %}

@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'order',
     'search',
+    'category',
 ]
 
 MIDDLEWARE = [

@@ -4,15 +4,22 @@
     {% include 'base/navbar.html' %}
 {% endblock %}
 
+{% block featured %}
+{% endblock %}
+
 {% block content %}
-    <div class="container">
+    <div class="container my-5">
+        <div class="row">
+                {% include 'products/featured_product.html' %}
+        </div>
         <div class="row">
             {% for product in products_list_all %}
             <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="{{ product.image.url }}" alt="Card image cap">
+                <img class="card-img-top" src="{{ product.image.url }}" alt="Card image cap" style='height: 200px; width: 250px; object-fit: contain'>
                 <div class="card-body">
-                    <h5 class="card-title">{{ product.title }}</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <h4 class="card-title">{{ product.title }}</h4>
+                    <h5 class="card-title">৳ {{ product.price }}</h5>
+                    <p class="card-text">{{ product.description|linebreaks|truncatewords:8 }}</p>
                     <div class="row">
                         <div class="col-sm-6"><a href="{% url 'product_list:product_detail' pk=product.id %}" class="btn btn-primary">Detail</a></div>
                         <div class="col-sm-6"><a href="#" class="btn btn-primary">Cart</a></div>

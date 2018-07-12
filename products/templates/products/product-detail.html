@@ -8,18 +8,15 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-9">
-                    <div class="card" style="width: 18rem;">
-                            <img class="card-img-top" src="{{ product_item_detail.image.url }}" alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title">{{ product_item_detail.title | truncatechars:9 | title }}</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            </div>
-                        </div>
+                <img  src="{{ product_item_detail.image.url }}" style='height: 350px; width: 300px; object-fit: contain'>
+                    <h5 class="card-title">{{ product_item_detail.title }}</h5>
+                    <h6 class="card-title">{{ product_item_detail.price }}</h6>
+                    <p class="card-text">{{ product_item_detail.description }}</p>
             </div>
             <div class="col-sm-3">
                 <form method="POST" class="quantity-form">
                     {% csrf_token %}
-                    <label for="">Qty:</label>
+                    <label for="">Quantity:</label>
                     <input type="hidden" class="produt-cart-id" name="produt-cart-name" value="{{ product_item_detail.id }}">
                     <input type="hidden" class="in-stock-amount" name="in-stock-amount" value="{{ product_item_detail.stock }}"> 
                     <input type="text" class="qty-name-id" name="qty-name" value="{{ cart_amount_count }}">

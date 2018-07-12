@@ -2,6 +2,16 @@ from order.models import Order
 from django import forms
 
 class OrderForm(forms.Form):
-    contact = forms.CharField()
-    transection = forms.CharField()
+    contact = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                "class": "form-control", 
+                "id": "form_full_name", 
+                "placeholder": "your contact number"}))
+    transection = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                "class": "form-control", 
+                "id": "form_full_name", 
+                "placeholder": "your bkash transection number"}))
      

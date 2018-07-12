@@ -26,3 +26,10 @@ def product_detail(request, pk):
         'cart_amount_count': cart_amount_count
     }
     return render(request, 'products/product-detail.html', context)
+
+def featured_list(request):
+    products_list = ProductList.objects.filter(featured=True)
+    context = {
+        'products_list_all': products_list
+    }
+    return render(request, 'products/home.html', context)
