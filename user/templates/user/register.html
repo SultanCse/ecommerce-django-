@@ -1,27 +1,46 @@
-{% extends "base/base.html" %} {% block content %}
-<h1>Registration Form</h1>
+{% extends "base/base.html" %} {% block head %} {% include 'base/navbar.html' %} {% endblock %} {% block content %}
 <form method="POST"> {% csrf_token %}{% load widget_tweaks %}
     <div class="container">
         <div class="row">
-            {{ form.first_name.label_tag }} {{ form.first_name| add_class:"form-control" }}
+            <div class="col-6 mx-auto">
+                <h1>Registration Form</h1>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6 mx-auto">
+                {{ form.first_name.label_tag }} {{ form.first_name| add_class:"form-control" }}
+            </div>
         </div>
         <div class="row">
-            {{ form.last_name.label_tag }} {{ form.last_name| add_class:"form-control" }}
+            <div class="col-6 mx-auto">
+                {{ form.last_name.label_tag }} {{ form.last_name| add_class:"form-control" }}
+            </div>
         </div>
         <div class="row">
-            {{ form.username.label_tag }} {{ form.username| add_class:"form-control" }}
+            <div class="col-6 mx-auto">
+                {{ form.username.label_tag }} {{ form.username| add_class:"form-control" }}
+            </div>
         </div>
         <div class="row">
-            {{ form.email.label_tag }} {{ form.email| add_class:"form-control" }}
+            <div class="col-6 mx-auto">
+                {{ form.email.label_tag }} {{ form.email| add_class:"form-control" }}
+            </div>
         </div>
         <div class="row">
-            {{ form.password.label_tag }} {{ form.password| add_class:"form-control" }}
+            <div class="col-6 mx-auto">
+                {{ form.password.label_tag }} {{ form.password| add_class:"form-control" }}
+            </div>
         </div>
         <div class="row">
-            {{ form.password2.label_tag }} {{ form.password2| add_class:"form-control" }}
+            <div class="col-6 mx-auto">
+                {{ form.password2.label_tag }} {{ form.password2| add_class:"form-control" }}
+            </div>
         </div>
         <div class="row">
-            <button type="submit" class="btn btn-default">submit</button>
+            <div class="col-6 my-2 mx-auto">
+                <button type="submit" class="btn btn-success">submit</button>
+            </div>
         </div>
     </div>
 

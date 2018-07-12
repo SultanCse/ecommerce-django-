@@ -1,8 +1,27 @@
-{% extends "base/base.html" %}
-{% block content %}
-<h1>Login</h1>
-<form method="POST"> {% csrf_token %}
-    {{ form }}
-    <button type="submit" class="btn btn-default">submit</button>
+{% extends "base/base.html" %} {% block head %} {% include 'base/navbar.html' %} {% endblock %} {% block content %}
+<form method="POST"> {% csrf_token %}{% load widget_tweaks %}
+    <div class="container">
+        <div class="row">
+            <div class="col-3 mx-auto">
+                <h1>Login Here</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4 mx-auto">
+                {{ form.username.label_tag }} {{ form.username| add_class:"form-control" }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4 mx-auto">
+                {{ form.password.label_tag }} {{ form.password| add_class:"form-control" }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-1 mx-auto">
+                <button type="submit" class="btn btn-success my-2">submit</button>
+            </div>
+        </div>
+    </div>
+
 </form>
 {% endblock content%}
