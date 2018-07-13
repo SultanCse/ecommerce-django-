@@ -10,7 +10,7 @@
                     <a href="{% url 'product_list:product_detail' pk=product.id %}" class="btn btn-primary">Detail</a>
                 </div>
                 <div class="col-sm-6">
-                    <a href="#" class="btn btn-primary">Cart</a>
+                    {% include '../products/cart.html' with cart=cart product=product %}
                 </div>
             </div>
         </div>

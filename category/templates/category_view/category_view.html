@@ -15,7 +15,9 @@
                     <p class="card-text">{{ product.description|linebreaks|truncatewords:8 }}</p>
                     <div class="row">
                         <div class="col-sm-6"><a href="{% url 'product_list:product_detail' pk=product.id %}" class="btn btn-primary">Detail</a></div>
-                        <div class="col-sm-6"><a href="#" class="btn btn-primary">Cart</a></div>
+                        <div class="col-sm-6">
+                            {% include '../products/cart.html' with cart=cart product=product %}
+                        </div>
                     </div>
                 </div>
             </div>

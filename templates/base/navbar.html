@@ -29,9 +29,9 @@
               Fassion
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Men</a>
-              <a class="dropdown-item" href="#">Weman</a>
-              <a class="dropdown-item" href="#">Baby</a>
+              <a class="dropdown-item" href="{% url 'category:cat_pro_list' categoryy='men' %}">Men</a>
+              <a class="dropdown-item" href="{% url 'category:cat_pro_list' categoryy='women' %}">Weman</a>
+              <a class="dropdown-item" href="{% url 'category:cat_pro_list' categoryy='baby' %}">Baby</a>
             </div>
           </li>
         </li>
@@ -75,7 +75,7 @@
         </li>
         {% endif %}
         <li class="nav-link">
-          <a href="{% url 'cart:home' %}" class="navbar-cart-count">{{ request.session.in_cart }}</a>
+          <a href="{% url 'cart:home' %}" ><i class="fas fa-cart-arrow-down navbar-cart-count">{{ request.session.in_cart }}</i></a>
         </li>
       </ul>
       {% include 'search/search_form.html' %}

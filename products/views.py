@@ -6,8 +6,10 @@ from cart.models import Cart, CartAmount
 
 def show_products_list(request):
     products_list = ProductList.objects.all()
+    cart_obj, new_cart = Cart.objects.new_or_get(request)
     context = {
-        'products_list_all': products_list
+        'products_list_all': products_list,
+        'cart': cart_obj,
     }
     return render(request, 'products/home.html', context)
 
