@@ -1,0 +1,48 @@
+{% extends "base/base.html" %} 
+{% block head %}
+{% include "base/navbar.html" %}
+{% endblock %}
+
+{% block content %}
+<p style="padding: 20px;">Order Number: {{ order.id }}</p>
+<p>Order Time: {{ order.updated_timestamp }} </p>
+<p>{{ order.updated_timestamp | timesince}} ago </p>
+<p style="color:rgb(250, 16, 16)">bKash Number: {{ order.contact }}</p>
+<p style="color:rgb(250, 16, 16)">Transection Number: {{ order.transection }}</p>
+<p>Cart Total: {{ order.cart.subtotal }}</p>
+<p>User name: {{ order.user.get_full_name }}</p>
+<p>Total: {{ order.cart.total }}</p>
+<h1>Products:</h1>
+<div class="container">
+{% for product in cart_amount %}
+<div class="row">
+    <div class="col">
+    {{ product.products.title }}
+</div>
+<div class="col">
+        {{ product.amount }}
+    </div>
+<div class="col">
+    {{ product.products.price }}
+</div>
+</div>
+{% endfor %}
+<div class="row">
+        <div class="col">Shipping charge</div>
+        <div class="col"></div>
+        <div class="col">{{ order.cart.shipping }}</div>
+    </div>
+<div class="row">
+        <div class="col">Total</div>
+        <div class="col"></div>
+        <div class="col">{{ order.cart.total }}</div>
+    </div>
+<div class="row">
+<form method="POST">
+    {% csrf_token %}
+    {{ form }}
+    <button class="btn btn-danger" type="submit">Submit</button>
+</form>
+
+{% endblock %}
+</div>

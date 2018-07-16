@@ -14,4 +14,9 @@ class OrderForm(forms.Form):
                 "class": "form-control", 
                 "id": "form_full_name", 
                 "placeholder": "your bkash transection number"}))
+
+class OrderConfrimForm(forms.ModelForm):
+    class Meta:
+        model = Order
+        fields = ['confirm']
      

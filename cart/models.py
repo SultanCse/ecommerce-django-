@@ -79,7 +79,7 @@ def m2m_changed_receiver(sender, instance, *args, **kwargs):
     if total < 1000:
         instance.shipping = 100
     elif total < 2000:
-        instance.shipping = 100
+        instance.shipping = 50
     else:
         instance.shipping = 0
     instance.total = instance.subtotal + instance.shipping

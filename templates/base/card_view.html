@@ -1,10 +1,10 @@
 {% for product in products_list_all %}
-<div class="card my-2" style="width: 17rem; border-width: 5px; margin-right: 2px;">
-        <img class="card-img-top" src="{{ product.image.url }}" alt="Card image cap" style='height: 200px; width: 250px; object-fit: contain'>
+<div class="card my-2 mx-auto" style="width: 17rem; border-width: 5px; margin-right: 2px;">
+        <img class="card-img-top m-auto" src="{{ product.image.url }}" alt="Card image cap" style='height: 150px; width: 180px; object-fit: contain;'>
         <div class="card-body">
-            <h3 class="card-title" style="color: rgb(204, 1, 255)">{{ product.title }}</h4>
-            <h5 class="card-title" style="color: rgb(255, 6, 213);">৳ {{ product.price }}</h5>
-            <p class="card-text">{{ product.description|linebreaks|truncatewords:8 }}</p>
+            <h5 class="card-title" style="color: rgb(204, 1, 255); margin: 0%; padding: 0%">{{ product.title }}</h5>
+            <h7 class="card-title" style="color: rgb(255, 6, 213); margin: 0%; padding: 0%">৳ {{ product.price }}</h7>
+            <p class="card-text" style="margin: 0%;">{{ product.description|truncatechars:40 }}</p>
             <div class="row">
                 <div class="col-sm-6">
                     <a href="{% url 'product_list:product_detail' pk=product.id %}" class="btn btn-primary">Detail</a>

@@ -1,0 +1,9 @@
+{% extends "base/base.html" %} 
+{% block head %}
+{% include "base/navbar.html" %}
+{% endblock %}
+{% block content %}
+{% for order in orders %}
+    <a href="{% url 'order:detail' pk=order.id %}">Order Number: {{ order.id }}</a><br>
+{% endfor %}
+{% endblock %}
